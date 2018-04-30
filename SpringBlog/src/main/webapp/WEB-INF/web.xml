@@ -6,10 +6,14 @@
 	<display-name>Blog avec Spring</display-name>
 
 	<servlet>
-		<servlet-name>BestofBlog</servlet-name>
+		<servlet-name>BestOfBlog</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 	</servlet>
 
+	<servlet-mapping>
+		<servlet-name>BestOfBlog</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
 
 
 

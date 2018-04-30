@@ -1,6 +1,6 @@
 # SpringBlog
-Projet Blog avec utilisation du Framework Spring
-utilisation de LogBack , JSP , 
+Projet Blog avec utilisation du Framework Spring.
+Utilisation de JavaEE, Maven, TomCat, LogBack , JSP , 
 
 >> Spring est un framework pour developper des applications d'entreprises qui permet d'avoir un squelette de projet.
 
@@ -45,6 +45,12 @@ utilisation de LogBack , JSP ,
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 			<version>1.2.3</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
 		</dependency>
 		...
 
@@ -130,6 +136,7 @@ utilisation de LogBack , JSP ,
 		
 9 - Modification de l'entete du beans
 
+		<!-- Bean Metier basique -->
 		<beans xmlns="http://www.springframework.org/schema/beans"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 		xmlns:context="http://www.springframework.org/schema/context"
@@ -140,26 +147,104 @@ utilisation de LogBack , JSP ,
 		...
 
 
+10 - gestion du chemin de la servlet 
+> dans web.xml
+
+	<servlet-mapping>
+		<servlet-name>BestofBlog</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+
+11 - Configuration des pages JSP
+
+> Dans BestOfBlog-servlet.xml
+
+	<!-- Bean de configuration Spring : Objet permettant de resoudre les noms 
+		de vues (ModelAndView) en page JSP -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.jstlView" />
+
+	</bean>
+
+>> Deplacement du fichier "BestOfBlog-servlet.xml" dans le WEB-INF
+
+12 - faire une redirection vers une autre pages.
+
+> modifier l'index.jsp 
+
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	<html>
+		<head>
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+			<title>Best of Blog</title>
+		</head>
+		<body>
+			<c:redirect url="/welcome.html"/>
+		</body>
+	</html>
 
 
 
 
+12- Creation du fichier welcome.jsp
 
+> Creation du dossier views dans Web-INF
+>> Creation du fichier welcome.jsp
 
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
+		pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Listes des articles</title>
+	</head>
+	<body>
+		<h1>Liste des articles</h1>
+		<c:forEach items="${ articles }" var="article">
+			<div title="${article.id }">
+				<h2>${article.title }</h2>
+				<p>${article.description }</p>
+			</div>
+		</c:forEach>
+	</body>
+	</html>	
 
+	
+	
+12- modification de IndexController.java
+		
+		
+		
+	@Controller
+	public class IndexController {
 
+		@Autowired
+		private Article article;
 
+		@RequestMapping(path="/welcome", method = RequestMethod.GET)
+		ModelAndView displayIndex() {
+			
+			ModelAndView monModelAndView = new ModelAndView("welcome");
+			
+			final List<Article> articles = new ArrayList<>();
+			articles.add(this.article);
+			monModelAndView.getModel().put("articles", articles);
+			return monModelAndView;
+			
+		}
 
-
-
-
-
-
-
-
-
-
-
+	}
 
 
 
