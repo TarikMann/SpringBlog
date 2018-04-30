@@ -2,6 +2,7 @@
 Projet Blog avec utilisation du Framework Spring
 utilisation de LogBack , JSP , 
 
+Spring est un framework pour developper des applications d'entreprises qui permet d'avoir un squelette de projet.
 Source : 
 - https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html
 - https://mvnrepository.com/
@@ -10,6 +11,7 @@ Source :
 
 1- Ajout du Build 
 
+	...
 	<build>
 		<finalName>SpringBlog</finalName>
 		<plugins>
@@ -25,23 +27,25 @@ Source :
 			</plugin>
 		</plugins>
 	</build>
-
+	...
+	
+	
 2 - Ajout du LogBag
 
-LogBack permet d'avoir des logs.
+>> LogBack permet d'avoir des logs.
 
-
+		...
 		<!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 			<version>1.2.3</version>
 		</dependency>
-		
+		...
 
-3 - Ajouter les dependances manquantes
+3 - Ajouter les dependances manquantes.
 
-
+		...
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
@@ -53,19 +57,22 @@ LogBack permet d'avoir des logs.
 			<artifactId>spring-webmvc</artifactId>
 			<version>5.0.5.RELEASE</version>
 		</dependency>
-...
+		...
 
 
 4 - Configuration du fichier web.xml
 
+	...
 	<servlet>
 		<servlet-name>BestofBlog</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 	</servlet>
+	...
+
 
 5 - Creation d'un fichier XML dans les ressources avec le nom de la servlet
 
-	>> Dans le fichier Creer  :
+>> Dans le fichier Creer  :
 
 		<?xml version="1.0" encoding="UTF-8"?>
 		<beans xmlns="http://www.springframework.org/schema/beans"
@@ -87,7 +94,7 @@ LogBack permet d'avoir des logs.
 		
 7 - On rempli le corp du Beans :  BestOfBlog-servlet.xml 
 	
-	
+	...
 	<bean id="article" class="fr.gtm.domaine.Article">
 
 		<constructor-arg type="Integer" value="1" />
@@ -95,12 +102,12 @@ LogBack permet d'avoir des logs.
 		<constructor-arg type="String" value="Super description ..." />
 
 	</bean>
-
+	...
 
 
 8 -  Creation du Controller  : IndexController.java
 
-Utilisation des annotations   : @Controller , @RequestMapping
+>> Utilisation des annotations   : @Controller , @RequestMapping
 
 		@Controller
 		public class IndexController {
@@ -125,7 +132,7 @@ Utilisation des annotations   : @Controller , @RequestMapping
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
-
+	...
 
 
 
