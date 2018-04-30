@@ -1,6 +1,6 @@
 # SpringBlog
 Projet Blog avec utilisation du Framework Spring.
-Utilisation de JavaEE, Maven, TomCat, LogBack , JSP , 
+>Utilisation de JavaEE/ Maven / TomCat / LogBack / JSP / JSTL.
 
 >> Spring est un framework pour developper des applications d'entreprises qui permet d'avoir un squelette de projet.
 
