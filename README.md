@@ -36,3 +36,27 @@ LogBack permet d'avoir des logs.
 
 3 - Ajouter les dependances manquantes
 
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>5.0.5.RELEASE</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>5.0.5.RELEASE</version>
+		</dependency>
+...
+
+
+4 - Configuration du fichier web.xml
+
+	<servlet>
+		<servlet-name>BestofBlog</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	</servlet>
+
+5 - Creation d'un fichier XML dans les resrouce avec le nom du nom de la servlet
+
