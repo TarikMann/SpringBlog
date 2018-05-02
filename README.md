@@ -222,7 +222,7 @@ I - Mise en place de l'infrastructure.
 
 	
 	
-12- modification de IndexController.java
+13- modification de IndexController.java
 		
 		
 		
@@ -303,22 +303,114 @@ II - Integration Hibernate.
 		
 	
 
+///  Object - Relational Mapping  "ORM" ///
+
+> Definir les entité " Classe Java <--> Table SQL "
+> Pour Chaque entité 
+>>  1- Definir un Identifiant  " ID <--> PK "
+>>  2- Definir les propriétés  " Attribut Java <--> Colonne SQL "
+>>  3- Definir les relations entre les entités
+>>>   - OneToMany <--> FK
+>>>   - ManyToMany <--> FK 
+>>>   - ManyToMany <--> Table intermediaire + 2 FK
+
+
+3 - Ajout des annotation et definition des entitées dans la classe Article.java
+
+> @Entity
+> @Table
+> @id
+> @Column
+> @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+
+		@Entity
+		@Table(name = "article")
+		public class Article {
+
+			@Id
+			@Column(name = "idArticle")
+			@GeneratedValue(strategy = GenerationType.IDENTITY)
+			private Integer id;
+
+			@Column
+			private String title;
+
+			@Column
+			private String description;
+			
+			...
+			
+			}
+
+			
+4- Configuration de JPA 
+
+> - Ajout de la  dependance Maven de Spring Data  :
+
+	<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-commons -->
+	<dependency>
+		<groupId>org.springframework.data</groupId>
+		<artifactId>spring-data-commons</artifactId>
+		<version>2.0.6.RELEASE</version>
+	</dependency>
 
 
 
+> - Ajout et configuration du Bean entityManagerFactory et transactionManager dans  BestofBlog-servlet.java
 
 
+	<!-- Configuration JPA -->
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="springblog" />
+	</bean>
 
-
-
-
-
-
-
-
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
 
 
  
+ 5- Ajout de l'entete  spring JPA  pour le  BestofBlog-servlet.java 
+ 
+	 <beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context.xsd
+			http://www.springframework.org/schema/data/jpa
+			http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+		
+		...
+		
+	</beans>	
+	
+	
+6- ajout et configuration des Repository	
+	
+	<!-- Repository -->
+	<jpa:repositories base-package="fr.gtm.repository" />
+	
+	
+	Creation de l'interface ArticleRepository
+	
+	public interface ArticleRepository extends JpaRepository< Article, Integer> {
 
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	

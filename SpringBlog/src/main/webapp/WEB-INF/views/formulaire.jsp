@@ -9,20 +9,33 @@
 </head>
 <body>
 	<h1>Ajouter un article</h1>
-	<form method="post" action="">
-		<fieldset>
-			<legend>Inscription</legend>
-			<p>Vous pouvez vous inscrire via ce formulaire.</p>
+	<form method="post">
+
+		<div>
+		<label for="id">Id</label>
+		<input type="text" id="id" name="id" value="" />
+		
+		
+		
+		 <label for="title">title</label>
+		<input	type="text" id="title" name="title" value=""  />
+		
+		
+		
+		 <label for="description">description</label>
+		</div>
+<!-- 		<fieldset> -->
+<!-- 			<legend>Inscription</legend> -->
+<!-- 			<p>Vous pouvez vous inscrire via ce formulaire.</p> -->
 
 
-			<label for="id">Id</label> 
-			<input type="text" id="id" name="id" value="" />
-			 <br /> <label for="title">title</label>
-			  <input		type="text" id="title" name="title" value="" size="20"
-				maxlength="20" /> <br /> <label for="description">description</label>
-			<input type="text" id="description" name="description" value="" />
+<!-- 			<label for="id">Id</label> <input type="text" id="id" name="id" -->
+<!-- 				value="" /> <br /> <label for="title">title</label> <input -->
+<!-- 				type="text" id="title" name="title" value="" size="20" -->
+<!-- 				maxlength="20" /> <br /> <label for="description">description</label> -->
+<!-- 			<input type="text" id="description" name="description" value="" /> -->
 
-		</fieldset>
+<!-- 		</fieldset> -->
 	</form>
 
 </body>

@@ -1,13 +1,30 @@
 package fr.gtm.domaine;
 
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+//@Component : Annotation permettant de déclarer un bean Spring.
+
+@Entity
+@Table(name = "article")
 public class Article {
 
+	@Id
+	@Column(name = "idArticle")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+
+	@Column
 	private String title;
+
+	@Column
 	private String description;
 
-	
-	
 	// Constructeur
 	public Article() {
 		super();
@@ -19,8 +36,7 @@ public class Article {
 		this.title = title;
 		this.description = description;
 	}
-	
-	
+
 	// Get & Set
 
 	public Integer getId() {
@@ -52,6 +68,4 @@ public class Article {
 		return "Article [id=" + id + ", title=" + title + ", description=" + description + "]";
 	}
 
-	
-	
 }
