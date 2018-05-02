@@ -37,6 +37,12 @@ public class Article {
 		this.description = description;
 	}
 
+	public Article( String title, String description) {
+		super();
+		this.title = title;
+		this.description = description;
+	}
+
 	// Get & Set
 
 	public Integer getId() {

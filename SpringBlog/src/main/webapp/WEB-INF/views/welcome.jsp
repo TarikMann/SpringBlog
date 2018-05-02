@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Listes des articles</title>
 </head>
-<body>
+<body  class="container">
 	<h1>Liste des articles</h1>
 	<c:forEach items="${ articles }" var="article">
 		<div title="${ article.id }">
@@ -15,7 +15,7 @@
 			<p>${ article.description }</p>
 		</div>
 	</c:forEach>
-		<c:url value="/formulaire.jsp" var="createUrl"/>
+		<c:url value="/formulaire.zzz" var="createUrl"/>
 	<a href="${ createUrl }"> Creation d'article</a>
 </body>
 </html>

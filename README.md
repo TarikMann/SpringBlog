@@ -403,14 +403,139 @@ II - Integration Hibernate.
 	}
 
 	
+III- Creation d'un formulaire : 
+
+1 - Creation du formulaire 
+
+	<form method="post">
+
+		<div>
+			<label for="title">Titre    : </label>
+			 <input type="text" id="title"	name="title" />
+		</div>
+		<br>
+		<div>
+			<label for="description">description : </label>
+			<textarea id="description" name="description"></textarea>			
+		</div>
+		<div>
+			<button>Valider</button>
+		</div>
+		
+	</form>
+	
+	
+2- creation de la methode displayform pour afficher le formulaire dans le indexController.java
+
+	@RequestMapping("/formulaire")
+	ModelAndView displayForm() {
+		ModelAndView mav = new ModelAndView("formulaire");
+		// Préparer un nouvel article à remplir.
+		return mav;
+	}
+	
+	
+3- Creation de la methode ValidateForm() dans le indexController.java
+	
+	@RequestMapping(path = "/formulaire", method = RequestMethod.POST)
+	ModelAndView validateForm(@RequestParam String title, @RequestParam String description) {
+		// Sauvegarde dans la bdd
+		final Article MonArticle = new Article(title, description);
+		this.articleRepository.save(MonArticle);
+
+		// renvoyer vers la page displayIndex
+		return this.displayIndex();
+
+	}
 	
 	
 	
+4- Ajouter les valeur dans la liste .	
+	
+	...
+	articles.addAll(this.articleRepository.findAll());
+	...
 	
 	
 	
+IV - Mise en place de bootstrap 
+
+1 - Télecharger la biblioteque Bootstrap : 	
+
+> https://getbootstrap.com/docs/4.1/getting-started/download/
+
+2 - ajouter les dossier Css et js au projet
+
+> Copier les dossiers css et js dans le dossier webapp
+
+3 - Création d'une jsp include pour ajouter les biblioteque dans tous les fichiers
+
+> Dans views on creer un fichier  header.jsp
+
+>> Modifier l'encoding windows --> preferences --> jsp Files --> UTF-8
+	
+	
+V- Ajout du mvc
+
+1 - dans le fichier BestOfBlog-servlet.java on ajoute :
+
+	<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa" 
+>	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/data/jpa
+        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+>       http://www.springframework.org/schema/mvc
+>       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+	<!-- Activation du scan du package controller pour l'analyse des classes 
+		annotées -->
+	<context:component-scan base-package="fr.gtm.controller" />
+>	<mvc:resources location="/js/**" mapping="/js" />
+>	<mvc:resources location="/css/**" mapping="/css" />
+	
+	...
+	
+	</beans>
 	
 	
 	
+2 - 	
+
+
+VI - mettre en place le logBack
+>> 1 - creer un fichier logback.xml dans resources
+
+	<?xml version="1.0" encoding="UTF-8"?>
+	<configuration>
+
+		<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+			<layout class="ch.qos.logback.classic.PatternLayout">
+				<Pattern>
+					%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
+				</Pattern>
+			</layout>
+		</appender>
+
+		<logger name="fr.gtm.SpringBlog" level="debug"
+			additivity="false">
+			<appender-ref ref="STDOUT" />
+		</logger>
+		
+		<logger name="org.springframework.security" level="debug"
+			additivity="false">
+			<appender-ref ref="STDOUT" />
+		</logger>
+
+		<root level="error">
+			<appender-ref ref="STDOUT" />
+		</root>
+
+	</configuration>
 	
 	
