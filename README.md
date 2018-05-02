@@ -12,7 +12,7 @@ Projet Blog avec utilisation du Framework Spring.
 > - https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html
 > - https://mvnrepository.com/
 
-
+I - Mise en place de l'infrastructure.
 
 1- Ajout du Build 
 
@@ -250,7 +250,58 @@ Projet Blog avec utilisation du Framework Spring.
 
 
 
+II - Integration Hibernate.
 
+1 -  Ajout des dependences Hibernate/JPA, JAXB et Mysql
+
+		...
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.6</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.2.17.Final</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+		....
+		
+2 - Creation du fichier "persistence.xml"
+
+> creation d'un fichier dans  src --> main --> webapp --> META-INF --> persistence.xml
+
+		
+		<?xml version="1.0" encoding="UTF-8"?>
+		<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+			version="2.0">
+			<persistence-unit name="springblog">
+				<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+				<properties>
+					<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+					<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/springblogbdd" />
+					<property name="hibernate.connection.user" value="root" />
+					<property name="hibernate.connection.password" value="root" />
+					<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL57Dialect" />
+					<property name="hibernate.hbm2ddl.auto" value="create,update" />
+				</properties>
+			</persistence-unit>
+		</persistence>
+		
+	
 
 
 

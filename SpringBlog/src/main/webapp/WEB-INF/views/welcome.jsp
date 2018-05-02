@@ -15,5 +15,7 @@
 			<p>${ article.description }</p>
 		</div>
 	</c:forEach>
+		<c:url value="/formulaire.jsp" var="createUrl"/>
+	<a href="${ createUrl }"> Creation d'article</a>
 </body>
 </html>

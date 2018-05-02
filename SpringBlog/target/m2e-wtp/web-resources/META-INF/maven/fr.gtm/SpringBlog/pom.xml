@@ -8,9 +8,8 @@
 
 	<name>SpringBlog Maven Webapp</name>
 	<url>http://maven.apache.org</url>
+
 	<dependencies>
-
-
 
 		<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
 		<dependency>
@@ -38,27 +37,49 @@
 			<artifactId>spring-context</artifactId>
 			<version>5.0.5.RELEASE</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>5.0.5.RELEASE</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.glassfish.web/jstl-impl -->
+		<dependency>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>jstl-impl</artifactId>
+			<version>1.2</version>
+		</dependency>
 
-<!-- https://mvnrepository.com/artifact/org.glassfish.web/jstl-impl -->
-<dependency>
-    <groupId>org.glassfish.web</groupId>
-    <artifactId>jstl-impl</artifactId>
-    <version>1.2</version>
-</dependency>
-<!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl-api -->
-<dependency>
-    <groupId>javax.servlet.jsp.jstl</groupId>
-    <artifactId>jstl-api</artifactId>
-    <version>1.2</version>
-</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl-api -->
+		<dependency>
+			<groupId>javax.servlet.jsp.jstl</groupId>
+			<artifactId>jstl-api</artifactId>
+			<version>1.2</version>
+		</dependency>
 
+		<!-- Hibernate /JPA + Mysql -->
 
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.6</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.2.17.Final</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.0</version>
+		</dependency>
 
 	</dependencies>
 	<build>
