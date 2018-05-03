@@ -703,7 +703,7 @@ Projet Blog avec utilisation du Framework Spring.
 	}
 	
 	
-##	IX - Repesitory
+##	IX - Repository
 
 > - https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods
 
@@ -719,7 +719,7 @@ Projet Blog avec utilisation du Framework Spring.
 	<c:url value="/search.zzz" var="searchUrl" />
 	<a href="${searchUrl}">Rechercher des articles</a>
 	
-### 3 - On cree la methode de redirection pour la recherche 	
+### 3 - On cree la methode de redirection pour la recherche 	 dans indexController.java
 
 	@GetMapping("/search")
 	String displaySearch() {
@@ -727,7 +727,7 @@ Projet Blog avec utilisation du Framework Spring.
 		return "search";
 	}
 
-### 4 - Creation de la page search.jsp 
+### 4 - Création de la page search.jsp 
 
 	<form method="post">
 		<center>
@@ -768,7 +768,7 @@ Projet Blog avec utilisation du Framework Spring.
 
 
 
-### 5 - on creer la methode rechercher
+### 5 - on creer la methode rechercher dans IndexController
 
 	@PostMapping("/search")
 	ModelAndView validateSearch(@RequestParam String search) {
