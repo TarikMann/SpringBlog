@@ -12,7 +12,7 @@ Projet Blog avec utilisation du Framework Spring.
 > - https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html
 > - https://mvnrepository.com/
 
-I - Mise en place de l'infrastructure.
+##I - Mise en place de l'infrastructure.
 
 1- Ajout du Build 
 
@@ -250,7 +250,7 @@ I - Mise en place de l'infrastructure.
 
 
 
-II - Integration Hibernate.
+## II - Integration Hibernate.
 
 1 -  Ajout des dependences Hibernate/JPA, JAXB et Mysql
 
@@ -403,7 +403,7 @@ II - Integration Hibernate.
 	}
 
 	
-III- Creation d'un formulaire : 
+##III- Creation d'un formulaire : 
 
 1 - Creation du formulaire 
 
