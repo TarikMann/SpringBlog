@@ -81,7 +81,7 @@ Projet Blog avec utilisation du Framework Spring.
 		...
 
 
-### 5 - Creation d'un fichier XML dans les ressources avec le nom de la servlet
+### 5 - Création d'un fichier XML dans les ressources avec le nom de la servlet.
 
 > Dans le fichier Creer  :
 
@@ -116,7 +116,7 @@ Projet Blog avec utilisation du Framework Spring.
 		...
 
 
-### 8 -  Creation du Controller  : IndexController.java
+### 8 -  Création du Controller  : IndexController.java
 
 >> Utilisation des annotations   : @Controller , @RequestMapping
 
@@ -134,7 +134,7 @@ Projet Blog avec utilisation du Framework Spring.
 
 
 		
-### 9 - Modification de l'entete du beans
+### 9 - Modification de l'entête du beans.
 
 		<!-- Bean Metier basique -->
 		<beans xmlns="http://www.springframework.org/schema/beans"
@@ -147,7 +147,7 @@ Projet Blog avec utilisation du Framework Spring.
 		...
 
 
-### 10 - gestion du chemin de la servlet 
+### 10 - Gestion du chemin de la servlet. 
 > dans web.xml
 
 	<servlet-mapping>
@@ -156,7 +156,7 @@ Projet Blog avec utilisation du Framework Spring.
 	</servlet-mapping>
 
 
-### 11 - Configuration des pages JSP
+### 11 - Configuration des pages JSP.
 
 > Dans BestOfBlog-servlet.xml
 
@@ -172,9 +172,9 @@ Projet Blog avec utilisation du Framework Spring.
 
 	</bean>
 
->> Deplacement du fichier "BestOfBlog-servlet.xml" dans le WEB-INF
+>> Déplacement du fichier "BestOfBlog-servlet.xml" dans le WEB-INF.
 
-### 12 - faire une redirection vers une autre pages.
+### 12 - Faire une redirection vers une autre pages.
 
 > modifier l'index.jsp 
 
@@ -195,10 +195,10 @@ Projet Blog avec utilisation du Framework Spring.
 
 
 
-### 13- Creation du fichier welcome.jsp
+### 13- Création du fichier welcome.jsp
 
-> Creation du dossier views dans Web-INF
->> Creation du fichier welcome.jsp
+> Création du dossier views dans Web-INF
+>> Création du fichier welcome.jsp
 
 	<%@ page language="java" contentType="text/html; charset=UTF-8"
 		pageEncoding="UTF-8"%>
@@ -222,8 +222,7 @@ Projet Blog avec utilisation du Framework Spring.
 
 	
 	
-### 14- modification de IndexController.java
-		
+### 14- Modification de IndexController.java
 		
 		
 	@Controller
@@ -245,8 +244,6 @@ Projet Blog avec utilisation du Framework Spring.
 		}
 
 	}
-
-
 
 
 
@@ -277,9 +274,9 @@ Projet Blog avec utilisation du Framework Spring.
 		</dependency>
 		....
 		
-### 2 - Creation du fichier "persistence.xml"
+### 2 - Création du fichier "persistence.xml"
 
-> creation d'un fichier dans  src --> main --> webapp --> META-INF --> persistence.xml
+> Création d'un fichier dans  src --> main --> webapp --> META-INF --> persistence.xml
 
 		
 		<?xml version="1.0" encoding="UTF-8"?>
@@ -305,7 +302,7 @@ Projet Blog avec utilisation du Framework Spring.
 
 ///  Object - Relational Mapping  "ORM" ///
 
-> Definir les entité " Classe Java <--> Table SQL "
+> Définir les entitées " Classe Java <--> Table SQL "
 > Pour Chaque entité 
 >>  1- Definir un Identifiant  " ID <--> PK " <br>
 >>  2- Definir les propriétés  " Attribut Java <--> Colonne SQL "<br>
@@ -391,7 +388,7 @@ Projet Blog avec utilisation du Framework Spring.
 	</beans>	
 	
 	
-### 6 - ajout et configuration des Repository	
+### 6 - Ajout et configuration des Repository	
 	
 	<!-- Repository -->
 	<jpa:repositories base-package="fr.gtm.repository" />
@@ -404,9 +401,9 @@ Projet Blog avec utilisation du Framework Spring.
 	}
 
 	
-## III- Creation d'un formulaire : 
+## III- Création d'un formulaire : 
 
-### 1 - Creation du formulaire 
+### 1 - Création du formulaire 
 
 	<form method="post">
 
@@ -426,7 +423,7 @@ Projet Blog avec utilisation du Framework Spring.
 	</form>
 	
 	
-### 2 - creation de la methode displayform pour afficher le formulaire dans le indexController.java
+### 2 - Création de la méthode displayform pour afficher le formulaire dans le indexController.java
 
 	@RequestMapping("/formulaire")
 	ModelAndView displayForm() {
@@ -436,7 +433,7 @@ Projet Blog avec utilisation du Framework Spring.
 	}
 	
 	
-### 3 - Creation de la methode ValidateForm() dans le indexController.java
+### 3 - Création de la methode ValidateForm() dans le indexController.java
 	
 	@RequestMapping(path = "/formulaire", method = RequestMethod.POST)
 	ModelAndView validateForm(@RequestParam String title, @RequestParam String description) {
@@ -465,7 +462,7 @@ Projet Blog avec utilisation du Framework Spring.
 
 > https://getbootstrap.com/docs/4.1/getting-started/download/
 
-### 2 - ajouter les dossier Css et js au projet
+### 2 - Ajouter les dossier Css et js au projet
 
 > Copier les dossiers css et js dans le dossier webapp
 
@@ -475,7 +472,7 @@ Projet Blog avec utilisation du Framework Spring.
 
 >> Modifier l'encoding windows --> preferences --> jsp Files --> UTF-8
 	
-### 4 - mise en place de bootstrap
+### 4 - Mise en place de bootstrap
 
 	<c:url value="/js" var="jsUrl" />
 	<script src="${jsUrl}/jquery-3.3.1.min.js"></script>
@@ -484,16 +481,16 @@ Projet Blog avec utilisation du Framework Spring.
 	<link rel="stylesheet" href="${bootstrapCssUrl}"/>
 	
 	
-### 5 - gestion de l'erreur Bootstrap : 
+### 5 - Gestion de l'erreur Bootstrap : 
  
- dans l'entete du fichier il faut ajouter  : ** isELIgnored="false" **
+> Dans l'entete du fichier il faut ajouter  : ** isELIgnored="false" **
  
  <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 	
 ## V - Ajout du mvc
 
-### 1 - dans le fichier BestOfBlog-servlet.java on ajoute :
+### 1 - Dans le fichier BestOfBlog-servlet.java on ajoute :
 
 	<beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
@@ -523,7 +520,7 @@ Projet Blog avec utilisation du Framework Spring.
 	
 	
 	
-### 2 - mise en place du titre
+### 2 - Mise en place du titre
 
 > Dans le fichier header.jsp
  
@@ -533,10 +530,36 @@ Projet Blog avec utilisation du Framework Spring.
 > Dans le fichier Welcome.jsp 
 	<jsp:param value="Liste des articles" name="title" />
 
+### 3 - Ajout du taglib de spring 
 
-## VI - mettre en place le logBack
+	<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-### 1 - creer un fichier logback.xml dans resources
+> Pour ne pas prendre les balises autant que balise html on utilise : 
+		<spring:escapeBody> ${article.description} </spring:escapeBody>
+
+> Modifier l'entete du fichier web.xml
+
+
+	<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+			http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+			version="4.0">
+
+> Ajouter le contex param dans web.xml
+	
+	<context-param>
+		<description>Paramétre générique permettant de déclancher l'echappement de caractére HTML dans les JSP</description>
+		<param-name>defaultHtmlEscape</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
+	
+	
+	
+## VI - Mettre en place le logBack
+
+### 1 - Créer un fichier logback.xml dans resources
 
 	<?xml version="1.0" encoding="UTF-8"?>
 	<configuration>
@@ -565,11 +588,11 @@ Projet Blog avec utilisation du Framework Spring.
 
 	</configuration>
 	
-## VII - la suppression
+## VII - La suppression
 
-### 1 - Premiere Methode :
+### 1 - Première Méthode :
 
-#### a - Creation du bouton supprimer 
+#### a - Création du bouton supprimer 
 
 	
 	<c:url value="/images" var="imgUrl"/>
@@ -578,8 +601,8 @@ Projet Blog avec utilisation du Framework Spring.
 		<img alt="Supprimer" src="${imgUrl}/delete.png"> 
 	</a>
 
-#### b - La methode de suppression
-> Creation de la methode deleteArticle  pour supprimer  dans IndexController.java
+#### b - La méthode de suppression
+> Création de la méthode deleteArticle  pour supprimer  dans IndexController.java
 
 	
 	ModelAndView deleteArticle(@RequestParam Integer articleId) {
@@ -588,13 +611,13 @@ Projet Blog avec utilisation du Framework Spring.
 		return this.displayIndex();
 	}
 
-> AJouter l'anotation
+> Ajouter l'anotation
 
 	@GetMapping("/delete")
 
-### 2- Deuxieme Methode :
+### 2- Deuxième Méthode :
 
-#### a - Creation du bouton supprimer 
+#### a - Création du bouton supprimer 
 
 	<c:url value="/delete" var="deleteUrl"/>
 	<c:url value="/images" var="imgUrl"/>
@@ -603,9 +626,9 @@ Projet Blog avec utilisation du Framework Spring.
 		<img alt="Supprimer" src="${imgUrl}/delete.png"> 
 	</a>
 
-#### b - La methode de suppression delete dans IndexController.java
+#### b - La méthode de suppression delete dans IndexController.java
 
-> Creation de la methode delete pour supprimer  dans IndexController.java
+> Création de la methode delete pour supprimer  dans IndexController.java
 
 	@GetMapping("/delete/{articleId}")
 	ModelAndView delete(@PathVariable (name="articleId") Integer articleId) {
@@ -615,21 +638,65 @@ Projet Blog avec utilisation du Framework Spring.
 	}
 
 
-> AJouter l'anotation
+> Ajouter l'anotation
 
 	@GetMapping("/delete/{articleId}")
 
 
-## VIII - Les formulaires Spring
+## VIII - Les formulaires Spring "Modifier le client "
 
+### 1 - Création de la methode de displayEdit
 
+	@GetMapping("/displayEdit/{articleId}")
+	ModelAndView displayEdit(@PathVariable(name = "articleId") Integer articleId) {
+		ModelAndView monModelAndViewedit = new ModelAndView("editformul");
 
+		Optional<Article> Monarticlerecup = this.articleRepository.findById(articleId);
+		if (Monarticlerecup.isPresent()) {
 
+			monModelAndViewedit.addObject("larticle", Monarticlerecup);
+			
+		}
+		return monModelAndViewedit;
+	}
 
+	
+### 1 - Création du fichier editformul.jsp
 
+> Ajout du taglib de spring  dans le editformul.jsp
 
+	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
+> ajout les balises de formulaire.
 
+	<form:form modelAttribute="editArticle" method="post"
+		action="${editUrl}">
 
+		<form:hidden path="id" />
 
+		<div class="form-group">
+			<label for="title">Titre :</label>
+			<form:input id="title" path="title" cssClass="form-control" />
+		</div>
 
+		<div class="form-group">
+			<label for="description">description :</label>
+			<form:textarea id="description" path="description"
+				cssClass="form-control"></form:textarea>
+
+		</div>
+		<div class="form-group">
+			<form:button>Modifier</form:button>
+		</div>
+
+	</form:form>
+	
+## 	3 - Création de la méthode modifier
+
+	@PostMapping("/modify")
+	ModelAndView validateEdit(@ModelAttribute Article article) {
+
+		this.articleRepository.save(article);
+
+		return this.displayIndex();
+	}
