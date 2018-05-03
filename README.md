@@ -337,6 +337,7 @@ Projet Blog avec utilisation du Framework Spring.
 			private String title;
 
 			@Column
+			@Lob
 			private String description;
 			
 			...
@@ -618,6 +619,8 @@ Projet Blog avec utilisation du Framework Spring.
 
 	@GetMapping("/delete/{articleId}")
 
+
+## VIII - Les formulaires Spring
 
 
 

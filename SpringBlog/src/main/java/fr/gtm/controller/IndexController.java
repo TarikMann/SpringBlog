@@ -2,6 +2,7 @@ package fr.gtm.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -80,14 +81,23 @@ public class IndexController {
 	
 	@GetMapping("/delete/{articleId}")
 	ModelAndView delete(@PathVariable (name="articleId") Integer articleId) {
-		this.articleRepository.deleteById(articleId);
+		 this.articleRepository.deleteById(articleId);
 		
 		return this.displayIndex();
 	}
 
 	
 	
-	
+	@GetMapping("/displayEdit/{articleId}")
+	ModelAndView displayEdit(@PathVariable (name="articleId") Integer articleId) {
+		ModelAndView monModelAndViewedit = new ModelAndView("editformul");
+		
+				Optional<Article> Monartcme  =	this.articleRepository.findById(articleId);
+				
+		System.out.println(Monartcme);
+		monModelAndViewedit.addObject("larticle", Monartcme);
+		return monModelAndViewedit;
+	}
 	
 	
 	

@@ -18,7 +18,7 @@
 
 		<c:url value="/images" var="imgUrl" />
 		<c:url value="/delete" var="deleteUrl"/>
-
+		<c:url value="/displayEdit" var="editUrl"/>
 		<c:forEach items="${ articles }" var="article">
 			<div class="col-sm-12 col-md-12" text-center>
 				<div class="span3" style="background: #e6ffe6; border: 1px">
@@ -29,8 +29,9 @@
 
 								<img alt="afficher" src="${imgUrl}/afficher.png" width="25%">
 
-								<img alt="Modifier" src="${imgUrl}/edit.png">
-								
+								<a href="${editUrl}/${article.id}">
+									<img alt="Modifier" src="${imgUrl}/edit.png">
+								</a>
 								<a href="${deleteUrl}/${article.id}">
 									<img alt="Supprimer" src="${imgUrl}/delete.png">
 								</a>

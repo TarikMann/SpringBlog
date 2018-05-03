@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 //@Component : Annotation permettant de déclarer un bean Spring.
@@ -23,6 +24,7 @@ public class Article {
 	private String title;
 
 	@Column
+	@Lob
 	private String description;
 
 	// Constructeur
