@@ -40,7 +40,7 @@
 						<div class="col-10">
 							<h2 class="text-muted">${ article.title }</h2>
 							<p>
-								<spring:escapeBody >${article.description}</spring:escapeBody>
+								<spring:escapeBody>${article.description}</spring:escapeBody>
 							</p>
 						</div>
 
@@ -51,8 +51,8 @@
 			<p></p>
 		</c:forEach>
 	</div>
-	<c:url value="/formulaire.zzz" var="createUrl" />
-
+	<c:url value="/search.zzz" var="searchUrl" />
+	<a href="${searchUrl}">Rechercher des articles</a>
 	</div>
 </body>
 </html>

@@ -11,6 +11,7 @@ Projet Blog avec utilisation du Framework Spring.
 
 > - https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html
 > - https://mvnrepository.com/
+> - https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods
 
 ## I - Mise en place de l'infrastructure.
 
@@ -691,7 +692,7 @@ Projet Blog avec utilisation du Framework Spring.
 
 	</form:form>
 	
-## 	3 - Création de la méthode modifier
+###	2 - Création de la méthode modifier
 
 	@PostMapping("/modify")
 	ModelAndView validateEdit(@ModelAttribute Article article) {
@@ -699,4 +700,80 @@ Projet Blog avec utilisation du Framework Spring.
 		this.articleRepository.save(article);
 
 		return this.displayIndex();
+	}
+	
+	
+##	IX - Repesitory
+
+> - https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods
+
+### 1 - dans le repository ArticleRepository
+
+	public interface ArticleRepository extends JpaRepository< Article, Integer> {
+	
+		List<Article> findAllByTitleContaining(String search);
+	}
+
+### 2 - On creer un lien pour la recherche
+
+	<c:url value="/search.zzz" var="searchUrl" />
+	<a href="${searchUrl}">Rechercher des articles</a>
+	
+### 3 - On cree la methode de redirection pour la recherche 	
+
+	@GetMapping("/search")
+	String displaySearch() {
+		
+		return "search";
+	}
+
+### 4 - Creation de la page search.jsp 
+
+	<form method="post">
+		<center>
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="search">Rechercher
+					: </label>
+				<div class="col-md-4">
+					<input id="search" name="search" type="text" placeholder="Titre"
+						class="form-control input-md">
+				</div>
+				<div class="col-md-4">
+					<button class="btn btn-block btn-lg btn-success">Rechercher</button>
+				</div>
+			</div>
+		</center>
+	</form>
+
+	<c:if test="${not empty resultList}">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>article</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<c:forEach items="${ resultList }" var="article">
+				<tbody>
+					<tr>
+						<td>${article.id}</td>
+						<td>${article.title}</td>
+						<td>${article.description}</td>
+					</tr>
+				</tbody>
+			</c:forEach>
+		</table>
+	</c:if>
+
+
+
+### 5 - on creer la methode rechercher
+
+	@PostMapping("/search")
+	ModelAndView validateSearch(@RequestParam String search) {
+		final ModelAndView monModelAndView = new ModelAndView("search");
+		
+		monModelAndView.addObject("resultList", this.articleRepository.findAllByTitleContaining(search));
+		return monModelAndView;
 	}

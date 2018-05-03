@@ -110,4 +110,18 @@ public class IndexController {
 		return this.displayIndex();
 	}
 
+	@GetMapping("/search")
+	String displaySearch() {
+
+		return "search";
+	}
+
+	@PostMapping("/search")
+	ModelAndView validateSearch(@RequestParam String search) {
+		final ModelAndView monModelAndView = new ModelAndView("search");
+
+		monModelAndView.addObject("resultList", this.articleRepository.findAllByTitleContaining(search));
+		return monModelAndView;
+	}
+
 }
