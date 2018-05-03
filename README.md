@@ -403,7 +403,7 @@ Projet Blog avec utilisation du Framework Spring.
 	}
 
 	
-##III- Creation d'un formulaire : 
+== III- Creation d'un formulaire : 
 
 1 - Creation du formulaire 
 
