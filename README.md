@@ -14,7 +14,7 @@ Projet Blog avec utilisation du Framework Spring.
 
 ## I - Mise en place de l'infrastructure.
 
-1- Ajout du Build 
+### 1- Ajout du Build 
 
 		...
 		<build>
@@ -35,7 +35,7 @@ Projet Blog avec utilisation du Framework Spring.
 		...
 	
 	
-2 - Ajout du LogBag
+### 2 - Ajout du LogBag
 
 > LogBack permet d'avoir des logs.
 
@@ -54,7 +54,7 @@ Projet Blog avec utilisation du Framework Spring.
 		</dependency>
 		...
 
-3 - Ajouter les dependances manquantes.
+### 3 - Ajouter les dependances manquantes.
 
 		...
 		<dependency>
@@ -71,7 +71,7 @@ Projet Blog avec utilisation du Framework Spring.
 		...
 
 
-4 - Configuration du fichier web.xml
+### 4 - Configuration du fichier web.xml
 
 		...
 		<servlet>
@@ -81,7 +81,7 @@ Projet Blog avec utilisation du Framework Spring.
 		...
 
 
-5 - Creation d'un fichier XML dans les ressources avec le nom de la servlet
+### 5 - Creation d'un fichier XML dans les ressources avec le nom de la servlet
 
 > Dans le fichier Creer  :
 
@@ -94,7 +94,7 @@ Projet Blog avec utilisation du Framework Spring.
 		</beans>
 	
 	
-6 - Création de la couche Domaine : 
+### 6 - Création de la couche Domaine : 
 
 > Création de la classe Article.java
 	
@@ -103,7 +103,7 @@ Projet Blog avec utilisation du Framework Spring.
 		private String description;
 
 		
-7 - On rempli le corp du Beans :  BestOfBlog-servlet.xml 
+### 7 - On rempli le corp du Beans :  BestOfBlog-servlet.xml 
 	
 		...
 		<bean id="article" class="fr.gtm.domaine.Article">
@@ -116,7 +116,7 @@ Projet Blog avec utilisation du Framework Spring.
 		...
 
 
-8 -  Creation du Controller  : IndexController.java
+### 8 -  Creation du Controller  : IndexController.java
 
 >> Utilisation des annotations   : @Controller , @RequestMapping
 
@@ -134,7 +134,7 @@ Projet Blog avec utilisation du Framework Spring.
 
 
 		
-9 - Modification de l'entete du beans
+### 9 - Modification de l'entete du beans
 
 		<!-- Bean Metier basique -->
 		<beans xmlns="http://www.springframework.org/schema/beans"
@@ -147,7 +147,7 @@ Projet Blog avec utilisation du Framework Spring.
 		...
 
 
-10 - gestion du chemin de la servlet 
+### 10 - gestion du chemin de la servlet 
 > dans web.xml
 
 	<servlet-mapping>
@@ -156,7 +156,7 @@ Projet Blog avec utilisation du Framework Spring.
 	</servlet-mapping>
 
 
-11 - Configuration des pages JSP
+### 11 - Configuration des pages JSP
 
 > Dans BestOfBlog-servlet.xml
 
@@ -174,7 +174,7 @@ Projet Blog avec utilisation du Framework Spring.
 
 >> Deplacement du fichier "BestOfBlog-servlet.xml" dans le WEB-INF
 
-12 - faire une redirection vers une autre pages.
+### 12 - faire une redirection vers une autre pages.
 
 > modifier l'index.jsp 
 
@@ -195,7 +195,7 @@ Projet Blog avec utilisation du Framework Spring.
 
 
 
-12- Creation du fichier welcome.jsp
+### 13- Creation du fichier welcome.jsp
 
 > Creation du dossier views dans Web-INF
 >> Creation du fichier welcome.jsp
@@ -222,7 +222,7 @@ Projet Blog avec utilisation du Framework Spring.
 
 	
 	
-13- modification de IndexController.java
+### 14- modification de IndexController.java
 		
 		
 		
@@ -252,7 +252,7 @@ Projet Blog avec utilisation du Framework Spring.
 
 ## II - Integration Hibernate.
 
-1 -  Ajout des dependences Hibernate/JPA, JAXB et Mysql
+### 1 -  Ajout des dependences Hibernate/JPA, JAXB et Mysql
 
 		...
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
@@ -277,7 +277,7 @@ Projet Blog avec utilisation du Framework Spring.
 		</dependency>
 		....
 		
-2 - Creation du fichier "persistence.xml"
+### 2 - Creation du fichier "persistence.xml"
 
 > creation d'un fichier dans  src --> main --> webapp --> META-INF --> persistence.xml
 
@@ -315,7 +315,7 @@ Projet Blog avec utilisation du Framework Spring.
 >>>   - ManyToMany <--> Table intermediaire + 2 FK
 
 
-3 - Ajout des annotation et definition des entitées dans la classe Article.java
+### 3 - Ajout des annotation et definition des entitées dans la classe Article.java
 
 > @Entity
 > @Table
@@ -344,7 +344,7 @@ Projet Blog avec utilisation du Framework Spring.
 			}
 
 			
-4- Configuration de JPA 
+### 4- Configuration de JPA 
 
 > - Ajout de la  dependance Maven de Spring Data  :
 
@@ -372,7 +372,7 @@ Projet Blog avec utilisation du Framework Spring.
 
 
  
- 5- Ajout de l'entete  spring JPA  pour le  BestofBlog-servlet.java 
+### 5 - Ajout de l'entete  spring JPA  pour le  BestofBlog-servlet.java 
  
 	 <beans xmlns="http://www.springframework.org/schema/beans"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
@@ -390,7 +390,7 @@ Projet Blog avec utilisation du Framework Spring.
 	</beans>	
 	
 	
-6- ajout et configuration des Repository	
+### 6 - ajout et configuration des Repository	
 	
 	<!-- Repository -->
 	<jpa:repositories base-package="fr.gtm.repository" />
@@ -405,7 +405,7 @@ Projet Blog avec utilisation du Framework Spring.
 	
 ## III- Creation d'un formulaire : 
 
-1 - Creation du formulaire 
+### 1 - Creation du formulaire 
 
 	<form method="post">
 
@@ -425,7 +425,7 @@ Projet Blog avec utilisation du Framework Spring.
 	</form>
 	
 	
-2- creation de la methode displayform pour afficher le formulaire dans le indexController.java
+### 2 - creation de la methode displayform pour afficher le formulaire dans le indexController.java
 
 	@RequestMapping("/formulaire")
 	ModelAndView displayForm() {
@@ -435,7 +435,7 @@ Projet Blog avec utilisation du Framework Spring.
 	}
 	
 	
-3- Creation de la methode ValidateForm() dans le indexController.java
+### 3 - Creation de la methode ValidateForm() dans le indexController.java
 	
 	@RequestMapping(path = "/formulaire", method = RequestMethod.POST)
 	ModelAndView validateForm(@RequestParam String title, @RequestParam String description) {
@@ -450,7 +450,7 @@ Projet Blog avec utilisation du Framework Spring.
 	
 	
 	
-4- Ajouter les valeur dans la liste .	
+### 4 - Ajouter les valeur dans la liste .	
 	
 	...
 	articles.addAll(this.articleRepository.findAll());
@@ -458,46 +458,46 @@ Projet Blog avec utilisation du Framework Spring.
 	
 	
 	
-IV - Mise en place de bootstrap 
+## IV - Mise en place de bootstrap 
 
-1 - Télecharger la biblioteque Bootstrap : 	
+### 1 - Télecharger la biblioteque Bootstrap : 	
 
 > https://getbootstrap.com/docs/4.1/getting-started/download/
 
-2 - ajouter les dossier Css et js au projet
+### 2 - ajouter les dossier Css et js au projet
 
 > Copier les dossiers css et js dans le dossier webapp
 
-3 - Création d'une jsp include pour ajouter les biblioteque dans tous les fichiers
+### 3 - Création d'une jsp include pour ajouter les biblioteque dans tous les fichiers
 
 > Dans views on creer un fichier  header.jsp
 
 >> Modifier l'encoding windows --> preferences --> jsp Files --> UTF-8
 	
 	
-V- Ajout du mvc
+## V - Ajout du mvc
 
-1 - dans le fichier BestOfBlog-servlet.java on ajoute :
+### 1 - dans le fichier BestOfBlog-servlet.java on ajoute :
 
 	<beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:jpa="http://www.springframework.org/schema/data/jpa" 
->	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/data/jpa
         http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
->       http://www.springframework.org/schema/mvc
->       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<!-- Activation du scan du package controller pour l'analyse des classes 
 		annotées -->
 	<context:component-scan base-package="fr.gtm.controller" />
->	<mvc:resources location="/js/**" mapping="/js" />
->	<mvc:resources location="/css/**" mapping="/css" />
+	<mvc:resources location="/js/**" mapping="/js" />
+	<mvc:resources location="/css/**" mapping="/css" />
 	
 	...
 	
@@ -505,11 +505,11 @@ V- Ajout du mvc
 	
 	
 	
-2 - 	
+### 2 - 	...
 
 
-VI - mettre en place le logBack
->> 1 - creer un fichier logback.xml dans resources
+## VI - mettre en place le logBack
+### 1 - creer un fichier logback.xml dans resources
 
 	<?xml version="1.0" encoding="UTF-8"?>
 	<configuration>
