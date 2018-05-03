@@ -307,7 +307,7 @@ Projet Blog avec utilisation du Framework Spring.
 
 > Definir les entité " Classe Java <--> Table SQL "
 > Pour Chaque entité 
->>  1- Definir un Identifiant  " ID <--> PK "
+>>  1- Definir un Identifiant  " ID <--> PK " <br>
 >>  2- Definir les propriétés  " Attribut Java <--> Colonne SQL "
 >>  3- Definir les relations entre les entités
 >>>   - OneToMany <--> FK
