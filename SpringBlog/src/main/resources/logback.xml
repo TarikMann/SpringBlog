@@ -9,12 +9,17 @@
 		</layout>
 	</appender>
 
-	<logger name="fr.gtm.SpringBlog" level="debug"
+	<logger name="fr.gtm.SpringBlog" level="info"
 		additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
 	
-	<logger name="org.springframework.security" level="debug"
+	<logger name="org.springframework" level="info"
+		additivity="false">
+		<appender-ref ref="STDOUT" />
+	</logger>
+	
+	<logger name="org.hibernate" level="info"
 		additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>

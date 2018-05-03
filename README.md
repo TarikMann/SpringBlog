@@ -308,7 +308,7 @@ Projet Blog avec utilisation du Framework Spring.
 > Definir les entité " Classe Java <--> Table SQL "
 > Pour Chaque entité 
 >>  1- Definir un Identifiant  " ID <--> PK " <br>
->>  2- Definir les propriétés  " Attribut Java <--> Colonne SQL "
+>>  2- Definir les propriétés  " Attribut Java <--> Colonne SQL "<br>
 >>  3- Definir les relations entre les entités
 >>>   - OneToMany <--> FK
 >>>   - ManyToMany <--> FK 
@@ -474,6 +474,21 @@ Projet Blog avec utilisation du Framework Spring.
 
 >> Modifier l'encoding windows --> preferences --> jsp Files --> UTF-8
 	
+### 4 - mise en place de bootstrap
+
+	<c:url value="/js" var="jsUrl" />
+	<script src="${jsUrl}/jquery-3.3.1.min.js"></script>
+	<script src="${jsUrl}/bootstrap.min.js}"></script>
+	<c:url value="/css/bootstrap.min.css" var="bootstrapCssUrl"/>
+	<link rel="stylesheet" href="${bootstrapCssUrl}"/>
+	
+	
+### 5 - gestion de l'erreur Bootstrap : 
+ 
+ dans l'entete du fichier il faut ajouter  : ** isELIgnored="false" **
+ 
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" isELIgnored="false"%>
 	
 ## V - Ajout du mvc
 
@@ -496,8 +511,10 @@ Projet Blog avec utilisation du Framework Spring.
 	<!-- Activation du scan du package controller pour l'analyse des classes 
 		annotées -->
 	<context:component-scan base-package="fr.gtm.controller" />
-	<mvc:resources location="/js/**" mapping="/js" />
-	<mvc:resources location="/css/**" mapping="/css" />
+
+	<mvc:annotation-driven />
+	<mvc:resources location="/js/" mapping="/js/**" />
+	<mvc:resources location="/css/" mapping="/css/**" />
 	
 	...
 	
@@ -505,10 +522,19 @@ Projet Blog avec utilisation du Framework Spring.
 	
 	
 	
-### 2 - 	...
+### 2 - mise en place du titre
+
+> Dans le fichier header.jsp
+ 
+	<title>${param.title}</title>
+	
+
+> Dans le fichier Welcome.jsp 
+	<jsp:param value="Liste des articles" name="title" />
 
 
 ## VI - mettre en place le logBack
+
 ### 1 - creer un fichier logback.xml dans resources
 
 	<?xml version="1.0" encoding="UTF-8"?>
@@ -538,4 +564,69 @@ Projet Blog avec utilisation du Framework Spring.
 
 	</configuration>
 	
+### VII - la suppression
+
+## 1 - Premiere Methode :
+
+### a - Creation du bouton supprimer 
+
 	
+	<c:url value="/images" var="imgUrl"/>
+	
+	<a href="/bestOfBlog/delete.html?articleId=${article.id}">
+		<img alt="Supprimer" src="${imgUrl}/delete.png"> 
+	</a>
+
+### b - La methode de suppression
+> Creation de la methode deleteArticle  pour supprimer  dans IndexController.java
+
+	
+	ModelAndView deleteArticle(@RequestParam Integer articleId) {
+		this.articleRepository.deleteById(articleId);
+		
+		return this.displayIndex();
+	}
+
+> AJouter l'anotation
+
+	@GetMapping("/delete")
+
+## 2- Deuxieme Methode :
+
+### a - Creation du bouton supprimer 
+
+	<c:url value="/delete" var="deleteUrl"/>
+	<c:url value="/images" var="imgUrl"/>
+	
+	<a href="">
+		<img alt="Supprimer" src="${imgUrl}/delete.png"> 
+	</a>
+
+### b - La methode de suppression delete dans IndexController.java
+
+> Creation de la methode delete pour supprimer  dans IndexController.java
+
+	@GetMapping("/delete/{articleId}")
+	ModelAndView delete(@PathVariable (name="articleId") Integer articleId) {
+		this.articleRepository.deleteById(articleId);
+		
+		return this.displayIndex();
+	}
+
+
+> AJouter l'anotation
+
+	@GetMapping("/delete/{articleId}")
+
+
+
+
+
+
+
+
+
+
+
+
+

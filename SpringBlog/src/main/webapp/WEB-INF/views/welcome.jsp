@@ -1,21 +1,54 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" isELIgnored="false"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	isELIgnored="false" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Listes des articles</title>
-</head>
-<body  class="container">
-	<h1>Liste des articles</h1>
-	<c:forEach items="${ articles }" var="article">
-		<div title="${ article.id }">
-			<h2>${ article.title }</h2>
-			<p>${ article.description }</p>
-		</div>
-	</c:forEach>
-		<c:url value="/formulaire.zzz" var="createUrl"/>
-	<a href="${ createUrl }"> Creation d'article</a>
+<jsp:include page="header.jsp">
+	<jsp:param value="Liste des articles" name="title" />
+
+</jsp:include>
+
+<body class="container">
+	<center>
+		</br>
+		<h1>Liste des articles :</h1>
+		</br>
+	</center>
+	<div class="row">
+
+		<c:url value="/images" var="imgUrl" />
+		<c:url value="/delete" var="deleteUrl"/>
+
+		<c:forEach items="${ articles }" var="article">
+			<div class="col-sm-12 col-md-12" text-center>
+				<div class="span3" style="background: #e6ffe6; border: 1px">
+					<div class="well row" title="${ article.id }">
+						<div class="col-2">
+							<center>
+								<p></p>
+
+								<img alt="afficher" src="${imgUrl}/afficher.png" width="25%">
+
+								<img alt="Modifier" src="${imgUrl}/edit.png">
+								
+								<a href="${deleteUrl}/${article.id}">
+									<img alt="Supprimer" src="${imgUrl}/delete.png">
+								</a>
+							</center>
+						</div>
+						<div class="col-10">
+							<h2 class="text-muted">${ article.title }</h2>
+							<p>${ article.description }</p>
+						</div>
+
+					</div>
+				</div>
+				</br>
+			</div>
+		</c:forEach>
+	</div>
+	<c:url value="/formulaire.zzz" var="createUrl" />
+
+	</div>
 </body>
 </html>
