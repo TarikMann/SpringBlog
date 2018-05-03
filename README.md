@@ -643,7 +643,7 @@ Projet Blog avec utilisation du Framework Spring.
 	@GetMapping("/delete/{articleId}")
 
 
-## VIII - Les formulaires Spring "Modifier le client "
+## VIII - Les formulaires Spring "Modifier l'article "
 
 ### 1 - Création de la methode de displayEdit
 
