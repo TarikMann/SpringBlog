@@ -564,11 +564,11 @@ Projet Blog avec utilisation du Framework Spring.
 
 	</configuration>
 	
-### VII - la suppression
+## VII - la suppression
 
-## 1 - Premiere Methode :
+### 1 - Premiere Methode :
 
-### a - Creation du bouton supprimer 
+#### a - Creation du bouton supprimer 
 
 	
 	<c:url value="/images" var="imgUrl"/>
@@ -577,7 +577,7 @@ Projet Blog avec utilisation du Framework Spring.
 		<img alt="Supprimer" src="${imgUrl}/delete.png"> 
 	</a>
 
-### b - La methode de suppression
+#### b - La methode de suppression
 > Creation de la methode deleteArticle  pour supprimer  dans IndexController.java
 
 	
@@ -591,9 +591,9 @@ Projet Blog avec utilisation du Framework Spring.
 
 	@GetMapping("/delete")
 
-## 2- Deuxieme Methode :
+### 2- Deuxieme Methode :
 
-### a - Creation du bouton supprimer 
+#### a - Creation du bouton supprimer 
 
 	<c:url value="/delete" var="deleteUrl"/>
 	<c:url value="/images" var="imgUrl"/>
@@ -602,7 +602,7 @@ Projet Blog avec utilisation du Framework Spring.
 		<img alt="Supprimer" src="${imgUrl}/delete.png"> 
 	</a>
 
-### b - La methode de suppression delete dans IndexController.java
+#### b - La methode de suppression delete dans IndexController.java
 
 > Creation de la methode delete pour supprimer  dans IndexController.java
 
