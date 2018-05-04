@@ -719,7 +719,7 @@ Projet Blog avec utilisation du Framework Spring.
 	<c:url value="/search.zzz" var="searchUrl" />
 	<a href="${searchUrl}">Rechercher des articles</a>
 	
-### 3 - On cree la methode de redirection pour la recherche 	 dans indexController.java
+### 3 - Création de la méthode de redirection pour la recherche 	 dans indexController.java
 
 	@GetMapping("/search")
 	String displaySearch() {
@@ -768,7 +768,7 @@ Projet Blog avec utilisation du Framework Spring.
 
 
 
-### 5 - on creer la methode rechercher dans IndexController
+### 5 - Creation de la méthode rechercher dans IndexController
 
 	@PostMapping("/search")
 	ModelAndView validateSearch(@RequestParam String search) {
@@ -777,3 +777,105 @@ Projet Blog avec utilisation du Framework Spring.
 		monModelAndView.addObject("resultList", this.articleRepository.findAllByTitleContaining(search));
 		return monModelAndView;
 	}
+	
+	
+## X - Logging API
+
+### 1 - Présentation 
+
+> Java -> JUL "Problème limité car sorti out uniquement"
+
+- https://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html
+
+> Ils existent plusieurs librairies de log : Log4J, LogBack. ""
+- Logger  : est un objet Java qui permet de construire le message et de produire des Logs.	
+- Handler / Appender : est une classe Java qui permet de persister les logs.
+- Level / Severity : Importance du message .
+    | 
+>>  |->Fatal > Error > Warning > Info > Debug > Trace
+
+- Formatter : Pattern . Modèle de format des messages.
+
+### 2 - Configuration LogBack
+
+-> le "root"  Logger : Parent de toutes les instances de Logger .
+> Chaque Logger  configuré est associé à un package Java et à un level.
+	<logger name = "fr.gtm.SpringBlog" level ="info" />
+	
+> Chaque logger ( même Root ) est associé a 1 ou plusieurs Appender.
+
+Un appender est configuré avec un nom et une classe d'implementation "Destination des logs"
+
+- https://logback.qos.ch/manual/index.html
+
+### 3 - Utilisation du LogBack
+
+Precedement dans le partie VI on a mis en place d'un fichier logBack.xml.
+
+#### 1 - Avoir les log dans un fichier 
+
+	<property name="myPattern"	value="%d{dd/MM/yyyy HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n " />
+
+	<appender name="APPLOG"
+		class="ch.qos.logback.core.FileAppender">
+		<file>C:\formationJava\Dossier Git\git clone\BlogSpring\SpringBlog\logs\BestOfBLog.log</file>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>
+				${myPattern}
+			</Pattern>
+		</layout>
+	</appender>
+
+ 
+
+	<root level="error">
+		<appender-ref ref="STDOUT" />
+			<appender-ref ref="APPLOG" />
+	</root>
+
+
+
+#### b - Utilisation des Log dans le controller IndexController
+
+		private static final Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
+
+> Dans les methode on ajoute :
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

@@ -11,7 +11,7 @@
 
 <body class="container">
 	<h1>Ajouter un article</h1>
-	<c:url value="/welcome.xx" var="welcomeUrl" />
+	<c:url value="/welcome.html" var="welcomeUrl" />
 	<p>
 		<a class="btn btn-default btn-lg" href="${ welcomeUrl }"> <i
 			class="icon-ok"></i> retour a la liste
