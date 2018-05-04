@@ -841,14 +841,36 @@ Precedement dans le partie VI on a mis en place d'un fichier logBack.xml.
 
 > Dans les methode on ajoute :
 
+		...
+		...
+
 		
+		
+## XI - Les Filtres
+
+### 1 - Mise en place des filtres
+
+> dans le web.xml on ajoute
 
 
-
-
-
-
-
+	...
+	<filter>
+		<filter-name>charEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>charEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	...	
 
 
 
