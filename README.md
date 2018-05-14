@@ -15,7 +15,9 @@ Projet Blog avec utilisation du Framework Spring.
 
 ## I - Mise en place de l'infrastructure.
 
-### 1- Ajout du Build 
+> Creation d'un projet Maven de type Web
+
+### 1- Ajout du Build dans le pom.xml 
 
 		...
 		<build>
@@ -82,7 +84,7 @@ Projet Blog avec utilisation du Framework Spring.
 		...
 
 
-### 5 - Création d'un fichier XML dans les ressources avec le nom de la servlet.
+### 5 - Création d'un fichier XML "BestOfBLog-servlet" dans les ressources avec le nom de la servlet dans le WEB-INF.
 
 > Dans le fichier Creer  :
 
@@ -107,6 +109,10 @@ Projet Blog avec utilisation du Framework Spring.
 ### 7 - On rempli le corp du Beans :  BestOfBlog-servlet.xml 
 	
 		...
+		<!-- Activation du scan du package controller pour l'analyse des classes annotées -->
+		
+		<context:component-scan base-package="fr.gtm.controller" />
+				
 		<bean id="article" class="fr.gtm.domaine.Article">
 	
 			<constructor-arg type="Integer" value="1" />
