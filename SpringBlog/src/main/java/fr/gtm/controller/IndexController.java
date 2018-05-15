@@ -19,12 +19,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import fr.gtm.domaine.Article;
 import fr.gtm.repository.ArticleRepository;
+import fr.gtm.service.ArticleService;
 
 @Controller
 public class IndexController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
-
 
 	/**
 	 * Autowired :
@@ -33,6 +33,9 @@ public class IndexController {
 	@Autowired
 	private Article article;
 
+	@Autowired
+	private ArticleService articleService;
+	
 	@Autowired
 	private ArticleRepository articleRepository;
 
@@ -58,7 +61,7 @@ public class IndexController {
 		final List<Article> articles = new ArrayList<>();
 		articles.add(this.article);
 		articles.addAll(this.articleRepository.findAll());
-		IndexController.LOGGER.debug("{} Article afficher" , articles.size());
+		IndexController.LOGGER.debug("{} Article afficher", articles.size());
 		// mettre dans la partie modeles
 		monModelAndView.getModel().put("articles", articles);
 		return monModelAndView;
@@ -66,9 +69,10 @@ public class IndexController {
 
 	@RequestMapping(path = "/formulaire", method = RequestMethod.POST)
 	ModelAndView validateForm(@RequestParam String title, @RequestParam String description) {
+		
 		// Sauvegarde dans la bdd
 		final Article MonArticle = new Article(title, description);
-		this.articleRepository.save(MonArticle);
+		this.articleService.saveService(MonArticle);
 
 		// renvoyer vers la page displayIndex
 		return this.displayIndex();
@@ -86,7 +90,7 @@ public class IndexController {
 
 	@GetMapping("/delete/{articleId}")
 	ModelAndView delete(@PathVariable(name = "articleId") Integer articleId) {
-		this.articleRepository.deleteById(articleId);
+		this.articleService.deleteByIdService(articleId);
 
 		return this.displayIndex();
 	}
@@ -95,7 +99,7 @@ public class IndexController {
 	ModelAndView displayEdit(@PathVariable(name = "articleId") Integer articleId) {
 		ModelAndView monModelAndViewedit = new ModelAndView("editformul");
 
-		Optional<Article> Monarticlerecup = this.articleRepository.findById(articleId);
+		Optional<Article> Monarticlerecup = this.articleService.findByIdService(articleId);
 		if (Monarticlerecup.isPresent()) {
 
 			monModelAndViewedit.addObject("editArticle", Monarticlerecup);
@@ -107,7 +111,7 @@ public class IndexController {
 	@PostMapping("/modify")
 	ModelAndView validateEdit(@ModelAttribute Article article) {
 
-		this.articleRepository.save(article);
+		this.articleService.saveService(article);
 
 		return this.displayIndex();
 	}

@@ -16,7 +16,9 @@
 	<!-- Activation du scan du package controller pour l'analyse des classes 
 		annotées -->
 	<context:component-scan base-package="fr.gtm.controller" />
-
+	
+	<context:component-scan base-package="fr.gtm.service" />
+	
 	<mvc:annotation-driven />
 	<mvc:resources location="/js/" mapping="/js/**" />
 	<mvc:resources location="/css/" mapping="/css/**" />
